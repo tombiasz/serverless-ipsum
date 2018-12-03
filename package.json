@@ -11,6 +11,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "jest": "^23.6.0",
     "serverless-offline": "^3.31.3"
   },
   "dependencies": {
