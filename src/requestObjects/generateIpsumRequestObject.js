@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const Ajv = require('Ajv');
 const { ValidRequestObject } = require('./validRequestObject');
 const { InvalidRequestObject } = require('./invalidRequestObject');
 
@@ -6,16 +7,48 @@ class GenerateIpsumRequestObject extends ValidRequestObject {
   constructor(options) {
     super();
     this.options = options;
+
   }
 
-  static fromObject({ options }) {
-    if (!_.isObject(options)) {
+  static get schema() {
+    return {
+      type: 'object',
+      properties: {
+        options: {
+          type: 'object',
+          default: {},
+          properties: {
+            count: { type: 'number', minimum: 1, maximum: 500 },
+            units: { type: 'string', enum: ['words', 'sentence', 'paragraph'] },
+            sentenceLowerBound: { type: 'number', minimum: 1, maximum: 100 },
+            sentenceUpperBound: { type: 'number', minimum: 1, maximum: 100 },
+            paragraphLowerBound: { type: 'number', minimum: 1, maximum: 30 },
+            paragraphUpperBound: { type: 'number', minimum: 1, maximum: 30 },
+            format: { type: 'string', enum: ['plain', 'html'] },
+          },
+        }
+      },
+    };
+  }
+
+  static validate(data) {
+    const ajv =  new Ajv({ coerceTypes: true, allErrors: true, useDefaults: true });
+    const valid = ajv.validate(this.schema, data);
+    return { isValid: valid, errors: ajv.errors };
+
+  }
+
+  static fromObject(obj) {
+    const { isValid, errors } = this.validate(obj);
+    if (!isValid) {
       const invalidRequest = new InvalidRequestObject();
-      invalidRequest.addError('options', 'is not an object');
+      errors.forEach(error => {
+        invalidRequest.addError(error.dataPath, error.message);
+      });
       return invalidRequest;
     }
 
-    return new this(options);
+    return new this(obj.options);
   }
 }
 

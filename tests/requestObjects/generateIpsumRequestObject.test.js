@@ -14,7 +14,7 @@ describe('GenerateIpsumRequestObject', () => {
 
   test('fromObject should work with empty object', () => {
     const request = GenerateIpsumRequestObject.fromObject({});
-    expect(request.options).toBeUndefined();
+    expect(request.options).toEqual({});
   });
 
   test('fromObject should work with object with empty options', () => {
@@ -33,8 +33,8 @@ describe('GenerateIpsumRequestObject', () => {
     const request = GenerateIpsumRequestObject.fromObject({ options });
     expect(request.isValid()).toBeFalsy();
     expect(request.hasErrors()).toBeTruthy();
-    expect(request.errors[0].parameter).toBe('options');
-    expect(request.errors[0].error).toBe('is not an object');
+    expect(request.errors[0].parameter).toBe('.options');
+    expect(request.errors[0].error).toBe('should be object');
   })
 
   test('isValid should be true', () => {
