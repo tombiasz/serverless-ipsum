@@ -1,5 +1,5 @@
 const loremIpsum = require('lorem-ipsum');
-const { IpsumService } = require('../src/IpsumService');
+const { IpsumService } = require('../../src/services/ipsumService');
 
 jest.mock('lorem-ipsum');
 

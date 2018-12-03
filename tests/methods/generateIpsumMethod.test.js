@@ -1,9 +1,9 @@
 const { GenerateIpsumMethod } = require('../../src/methods/generateIpsumMethod');
-const { IpsumService } = require('../../src/ipsumService');
+const { IpsumService } = require('../../src/services/ipsumService');
 const { GenerateIpsumRequestObject } = require('../../src/requestObjects/generateIpsumRequestObject');
 const { FailureResponseObject } = require('../../src/responseObjects/failureResponseObject');
 
-jest.mock('../../src/ipsumService');
+jest.mock('../../src/services/ipsumService');
 
 IpsumService.mockImplementation(() => {
   return {
