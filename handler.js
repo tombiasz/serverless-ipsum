@@ -1,6 +1,6 @@
 'use strict';
 
-const { ipsum } = require('./src/ipsum');
+const { IpsumService } = require('./src/IpsumService');
 
 module.exports.ipsum = (event, context, callback) => {
   const response = {
@@ -9,7 +9,7 @@ module.exports.ipsum = (event, context, callback) => {
       'Access-Control-Allow-Origin': '*', // Required for CORS support to work
     },
     body: JSON.stringify({
-      message: ipsum(),
+      message: new IpsumService().generateIpsum(),
     }),
   };
 
