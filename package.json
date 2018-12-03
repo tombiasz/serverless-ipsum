@@ -11,5 +11,8 @@
   "license": "MIT",
   "devDependencies": {
     "serverless-offline": "^3.31.3"
+  },
+  "dependencies": {
+    "lorem-ipsum": "^1.0.6"
   }
 }
