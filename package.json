@@ -13,6 +13,7 @@
     "serverless-offline": "^3.31.3"
   },
   "dependencies": {
-    "lorem-ipsum": "^1.0.6"
+    "lorem-ipsum": "^1.0.6",
+    "serverless": "^1.34.1"
   }
 }
