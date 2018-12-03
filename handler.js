@@ -5,7 +5,7 @@ const { IpsumService } = require('./src/IpsumService');
 const { GenerateIpsumMethod } = require('./src/generateIpsumMethod');
 
 module.exports.ipsum = (event, context, callback) => {
-  const queryParams = { options: event.queryStringParameters };
+  const queryParams = { options: { ...event.queryStringParameters } };
 
   const request = GenerateIpsumRequestObject.fromObject(queryParams);
   const ipsumService =  new IpsumService();
@@ -17,7 +17,7 @@ module.exports.ipsum = (event, context, callback) => {
       'Access-Control-Allow-Origin': '*', // Required for CORS support to work
     },
     body: JSON.stringify({
-      message: generateIpsumMethod.process(),
+      message: generateIpsumMethod.process(request),
     }),
   };
 
