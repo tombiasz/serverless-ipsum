@@ -1,0 +1,40 @@
+const { ResponseObject } = require('./responseObject');
+
+class FailureResponseObject extends ResponseObject {
+  constructor(type, message) {
+    super();
+    this.type = type;
+    this.message = message;
+  }
+
+  isSuccess() {
+    return false;
+  }
+
+  static get VALIDATION_ERROR() {
+    return 'VALIDATION_ERROR';
+  }
+
+  static get SYSTEM_ERROR() {
+    return 'SYSTEM_ERROR';
+  }
+
+  static buildSystemError(message) {
+    return new this(this.SYSTEM_ERROR, message);
+  }
+
+  static buildValidationError(message) {
+    return new this(this.VALIDATION_ERROR, message);
+  }
+
+  static buildFromInvalidRequestObject(invalidRequest) {
+    const message = invalidRequest.errors.map(({ parameter, error }) => {
+      return { parameter, error }
+    });
+    return this.buildValidationError(message);
+  }
+}
+
+module.exports = {
+  FailureResponseObject,
+};
