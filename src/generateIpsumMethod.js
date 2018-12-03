@@ -1,3 +1,6 @@
+const { FailureResponseObject } = require('./responseObjects/failureResponseObject');
+const { SuccessResponseObject } = require('./responseObjects/successResponseObject');
+
 class GenerateIpsumMethod {
   constructor(ipsumService) {
     this._ipsumService = ipsumService;
@@ -5,9 +8,14 @@ class GenerateIpsumMethod {
 
   process(request) {
     if (!request.isValid()) {
-      return request.errors;
+      return FailureResponseObject.buildFromInvalidRequestObject(request);
     }
-    return this._ipsumService.generateIpsum(request.options);
+    try {
+      const ipsum = this._ipsumService.generateIpsum(request.options);
+      return new SuccessResponseObject(ipsum);
+    } catch(err) {
+      return FailureResponseObject.buildFromError(err);
+    }
   }
 }
 
