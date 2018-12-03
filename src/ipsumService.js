@@ -1,8 +1,8 @@
 const loremIpsum = require('lorem-ipsum');
 
 class IpsumService {
-  generateIpsum() {
-    return loremIpsum();
+  generateIpsum(options) {
+    return loremIpsum(options);
   }
 }
 

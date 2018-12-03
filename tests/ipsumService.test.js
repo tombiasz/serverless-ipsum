@@ -9,16 +9,17 @@ describe('IpsumService', () => {
   });
 
   test('should call lorem-ipsum module', () => {
-    const ipsumSrc = new IpsumService();
-    ipsumSrc.generateIpsum();
-    expect(loremIpsum).toBeCalledWith();
+    const ipsumService = new IpsumService();
+    const options = { foo: 1 };
+    ipsumService.generateIpsum(options);
+    expect(loremIpsum).toBeCalledWith(options);
   });
 
   test('should return string', () => {
     const expected = 'test';
     loremIpsum.mockReturnValue(expected);
-    const ipsumSrc = new IpsumService();
-    const received = ipsumSrc.generateIpsum();
+    const ipsumService = new IpsumService();
+    const received = ipsumService.generateIpsum();
     expect(received).toBe(expected);
   })
 })
