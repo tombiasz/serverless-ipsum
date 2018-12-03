@@ -1,9 +1,13 @@
 'use strict';
 
+const { GenerateIpsumRequestObject } = require('./src/requestObjects/generateIpsumRequestObject');
 const { IpsumService } = require('./src/IpsumService');
 const { GenerateIpsumMethod } = require('./src/generateIpsumMethod');
 
 module.exports.ipsum = (event, context, callback) => {
+  const queryParams = { options: event.queryStringParameters };
+
+  const request = GenerateIpsumRequestObject.fromObject(queryParams);
   const ipsumService =  new IpsumService();
   const generateIpsumMethod = new GenerateIpsumMethod(ipsumService);
 
