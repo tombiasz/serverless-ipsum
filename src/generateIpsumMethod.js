@@ -3,8 +3,11 @@ class GenerateIpsumMethod {
     this._ipsumService = ipsumService;
   }
 
-  process() {
-    return this._ipsumService.generateIpsum();
+  process(request) {
+    if (!request.isValid()) {
+      return request.errors;
+    }
+    return this._ipsumService.generateIpsum(request.options);
   }
 }
 
