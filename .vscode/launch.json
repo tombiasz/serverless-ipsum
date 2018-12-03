@@ -10,9 +10,8 @@
       "name": "Launch Serverless Offline",
       "program": "${workspaceRoot}/node_modules/.bin/sls",
       "args": [
-          "offline",
-          "--port=3000",
-          "start",
+        "offline",
+        "start",
       ],
       "env": {
         "SLS_DEBUG": "*",

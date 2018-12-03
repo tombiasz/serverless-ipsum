@@ -7,6 +7,10 @@
 # The `service` block is the name of the service
 service: serverless-ipsum
 
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
 # The `provider` block defines where your service will be deployed
 provider:
   name: aws
@@ -22,6 +26,6 @@ functions:
           path: ipsum
           method: get
           cors: true
-
-plugins:
-  - serverless-offline
+custom:
+  serverless-offline:
+    port: "${env:APP_PORT}"
