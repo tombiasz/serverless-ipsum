@@ -7,6 +7,10 @@ class FailureResponseObject extends ResponseObject {
     this.message = message;
   }
 
+  get value() {
+    return { type: this.type, message: this.message };
+  }
+
   isSuccess() {
     return false;
   }

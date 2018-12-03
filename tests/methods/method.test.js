@@ -21,6 +21,9 @@ describe('Method', () => {
     const response = method.process(request);
     expect(response.isSuccess()).toBeFalsy();
     expect(response.type).toBe(FailureResponseObject.SYSTEM_ERROR);
-    expect(response.message).toBe('Error: ups :(');
+    expect(response.value).toEqual({
+      type: FailureResponseObject.SYSTEM_ERROR,
+      message: 'Error: ups :(',
+    });
   });
 });

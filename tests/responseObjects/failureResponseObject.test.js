@@ -47,4 +47,13 @@ describe('FailureResponseObject', () => {
     expect(response.type).toBe(FailureResponseObject.SYSTEM_ERROR);
     expect(response.message).toBe('Error: test');
   });
+
+  test('class instance has value property', () => {
+    const message = 'test';
+    const response = FailureResponseObject.buildValidationError(message);
+    expect(response.value).toEqual({
+      type: FailureResponseObject.VALIDATION_ERROR,
+      message,
+    });
+  });
 });
