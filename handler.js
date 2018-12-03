@@ -1,6 +1,6 @@
 'use strict';
 
-const ipsum = require('lorem-ipsum');
+const { ipsum } = require('./src/ipsum');
 
 module.exports.ipsum = (event, context, callback) => {
   const response = {
