@@ -2,7 +2,7 @@
 
 const { GenerateIpsumRequestObject } = require('./src/requestObjects/generateIpsumRequestObject');
 const { IpsumService } = require('./src/IpsumService');
-const { GenerateIpsumMethod } = require('./src/generateIpsumMethod');
+const { GenerateIpsumMethod } = require('./src/methods/generateIpsumMethod');
 
 module.exports.ipsum = (event, context, callback) => {
   const queryParams = { options: { ...event.queryStringParameters } };

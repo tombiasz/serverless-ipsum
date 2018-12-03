@@ -1,9 +1,9 @@
-const { GenerateIpsumMethod } = require('../src/generateIpsumMethod');
-const { IpsumService } = require('../src/ipsumService');
-const { GenerateIpsumRequestObject } = require('../src/requestObjects/generateIpsumRequestObject');
-const { FailureResponseObject } = require('../src/responseObjects/failureResponseObject');
+const { GenerateIpsumMethod } = require('../../src/methods/generateIpsumMethod');
+const { IpsumService } = require('../../src/ipsumService');
+const { GenerateIpsumRequestObject } = require('../../src/requestObjects/generateIpsumRequestObject');
+const { FailureResponseObject } = require('../../src/responseObjects/failureResponseObject');
 
-jest.mock('../src/ipsumService');
+jest.mock('../../src/ipsumService');
 
 IpsumService.mockImplementation(() => {
   return {
@@ -41,7 +41,6 @@ describe('GenerateIpsumMethod', () => {
     expect(response.isSuccess()).toBeFalsy();
     expect(response.type).toBe(FailureResponseObject.VALIDATION_ERROR);
   });
-
 
   test('should handle system error', () => {
     IpsumService.mockImplementation(() => {
