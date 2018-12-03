@@ -19,7 +19,7 @@ provider:
 # The `functions` block defines what code to deploy
 functions:
   ipsum:
-    handler: handler.ipsum
+    handler: handler.getIpsum
     # The `events` block defines how to trigger the handler.helloWorld code
     events:
       - http:
