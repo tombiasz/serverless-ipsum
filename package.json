@@ -4,6 +4,7 @@
   "description": "1st challenge of serverless #noServerNovember",
   "main": "index.js",
   "scripts": {
+    "start-dev": "serverless offline start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
