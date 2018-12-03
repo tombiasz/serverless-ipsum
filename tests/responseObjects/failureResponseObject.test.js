@@ -41,4 +41,10 @@ describe('FailureResponseObject', () => {
     ]);
   });
 
+  test('buildFromError should build proper system error', () => {
+    const err = new Error('test');
+    const response = FailureResponseObject.buildFromError(err);
+    expect(response.type).toBe(FailureResponseObject.SYSTEM_ERROR);
+    expect(response.message).toBe('Error: test');
+  });
 });

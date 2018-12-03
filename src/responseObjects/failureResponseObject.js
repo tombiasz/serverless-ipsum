@@ -33,6 +33,11 @@ class FailureResponseObject extends ResponseObject {
     });
     return this.buildValidationError(message);
   }
+
+  static buildFromError(err) {
+    const message = `${err.name}: ${err.message}`;
+    return this.buildSystemError(message);
+  }
 }
 
 module.exports = {
