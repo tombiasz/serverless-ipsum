@@ -2,7 +2,7 @@
 
 const ipsum = require('lorem-ipsum');
 
-module.exports.helloWorld = (event, context, callback) => {
+module.exports.ipsum = (event, context, callback) => {
   const response = {
     statusCode: 200,
     headers: {
