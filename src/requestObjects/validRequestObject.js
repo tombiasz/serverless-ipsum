@@ -1,3 +1,4 @@
+const Ajv = require('Ajv');
 const { RequestObject } = require('./requestObject');
 
 class ValidRequestObject extends RequestObject {
@@ -7,6 +8,16 @@ class ValidRequestObject extends RequestObject {
 
   isValid() {
     return true;
+  }
+
+  static schema() {
+    return {};
+  }
+
+  static validate(data) {
+    const ajv =  new Ajv({ coerceTypes: true, allErrors: true, useDefaults: true });
+    const valid = ajv.validate(this.schema, data);
+    return { isValid: valid, errors: ajv.errors };
   }
 }
 

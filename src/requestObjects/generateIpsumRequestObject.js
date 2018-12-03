@@ -1,5 +1,3 @@
-const _ = require('lodash');
-const Ajv = require('Ajv');
 const { ValidRequestObject } = require('./validRequestObject');
 const { InvalidRequestObject } = require('./invalidRequestObject');
 
@@ -7,7 +5,6 @@ class GenerateIpsumRequestObject extends ValidRequestObject {
   constructor(options) {
     super();
     this.options = options;
-
   }
 
   static get schema() {
@@ -29,13 +26,6 @@ class GenerateIpsumRequestObject extends ValidRequestObject {
         }
       },
     };
-  }
-
-  static validate(data) {
-    const ajv =  new Ajv({ coerceTypes: true, allErrors: true, useDefaults: true });
-    const valid = ajv.validate(this.schema, data);
-    return { isValid: valid, errors: ajv.errors };
-
   }
 
   static fromObject(obj) {
