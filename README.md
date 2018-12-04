@@ -1,6 +1,8 @@
 # serverless-ipsum
 
-[#noServerNovember](https://serverless.com/blog/no-server-november-challenge/) challenge #1 Serverless Ipsum
+Absolutely Over-Engineered Ipsum as a Service
+
+[#noServerNovember](https://serverless.com/blog/no-server-november-challenge/) challenge #1
 
 # run dev
 ```
