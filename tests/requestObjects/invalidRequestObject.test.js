@@ -8,10 +8,10 @@ describe('InvalidRequestObject', () => {
 
     expect(request.hasErrors).toBeTruthy();
     expect(request.errors.length).toBe(2);
-  })
+  });
 
   test('should be false', () => {
     const request = new InvalidRequestObject();
     expect(request.isValid()).toBeFalsy();
-  })
-})
+  });
+});

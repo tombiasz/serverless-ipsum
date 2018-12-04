@@ -32,9 +32,7 @@ class FailureResponseObject extends ResponseObject {
   }
 
   static buildFromInvalidRequestObject(invalidRequest) {
-    const message = invalidRequest.errors.map(({ parameter, error }) => {
-      return { parameter, error }
-    });
+    const message = invalidRequest.errors.map(({ parameter, error }) => ({ parameter, error }));
     return this.buildValidationError(message);
   }
 

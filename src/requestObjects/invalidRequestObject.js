@@ -7,7 +7,7 @@ class InvalidRequestObject extends RequestObject {
   }
 
   addError(parameter, error) {
-    this.errors.push({ parameter, error })
+    this.errors.push({ parameter, error });
   }
 
   hasErrors() {
@@ -21,4 +21,4 @@ class InvalidRequestObject extends RequestObject {
 
 module.exports = {
   InvalidRequestObject,
-}
+};

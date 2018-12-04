@@ -4,10 +4,10 @@ const { GenerateIpsumMethod } = require('./methods/generateIpsumMethod');
 const { SuccessResponseObject } = require('./responseObjects/successResponseObject');
 const { FailureResponseObject } = require('./responseObjects/failureResponseObject');
 
-STATUS_CODE_MAP = {
+const STATUS_CODE_MAP = {
   [SuccessResponseObject.SUCCESS]: 200,
   [FailureResponseObject.VALIDATION_ERROR]: 400,
-  [FailureResponseObject.SYSTEM_ERROR]: 500
+  [FailureResponseObject.SYSTEM_ERROR]: 500,
 };
 
 function responseObjectToHttpResponse({ type, value }) {
@@ -23,12 +23,12 @@ function responseObjectToHttpResponse({ type, value }) {
 function getIpsum(event, context, callback) {
   const queryParams = { options: { ...event.queryStringParameters } };
   const request = GenerateIpsumRequestObject.fromObject(queryParams);
-  const ipsumService =  new IpsumService();
+  const ipsumService = new IpsumService();
   const generateIpsumMethod = new GenerateIpsumMethod(ipsumService);
   const response = generateIpsumMethod.process(request);
   callback(null, responseObjectToHttpResponse(response));
-};
+}
 
 module.exports = {
   getIpsum,
-}
+};

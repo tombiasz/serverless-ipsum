@@ -8,4 +8,4 @@ class IpsumService {
 
 module.exports = {
   IpsumService,
-}
+};

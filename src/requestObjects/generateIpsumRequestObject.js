@@ -23,7 +23,7 @@ class GenerateIpsumRequestObject extends ValidRequestObject {
             paragraphUpperBound: { type: 'number', minimum: 1, maximum: 30 },
             format: { type: 'string', enum: ['plain', 'html'] },
           },
-        }
+        },
       },
     };
   }
@@ -32,8 +32,8 @@ class GenerateIpsumRequestObject extends ValidRequestObject {
     const { isValid, errors } = this.validate(obj);
     if (!isValid) {
       const invalidRequest = new InvalidRequestObject();
-      errors.forEach(error => {
-        invalidRequest.addError(error.dataPath, error.message);
+      errors.forEach(({ dataPath, message }) => {
+        invalidRequest.addError(dataPath, message);
       });
       return invalidRequest;
     }
@@ -44,4 +44,4 @@ class GenerateIpsumRequestObject extends ValidRequestObject {
 
 module.exports = {
   GenerateIpsumRequestObject,
-}
+};

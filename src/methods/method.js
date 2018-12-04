@@ -1,7 +1,7 @@
 const { FailureResponseObject } = require('../responseObjects/failureResponseObject');
 
 class Method {
-  process_request(request) {
+  processRequest(request) {
     throw new Error('not implemented');
   }
 
@@ -11,8 +11,8 @@ class Method {
     }
 
     try {
-      return this.process_request(request)
-    } catch(err) {
+      return this.processRequest(request);
+    } catch (err) {
       return FailureResponseObject.buildFromError(err);
     }
   }

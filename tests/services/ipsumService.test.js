@@ -12,7 +12,7 @@ describe('IpsumService', () => {
     const ipsumService = new IpsumService();
     const options = { foo: 1 };
     ipsumService.generateIpsum(options);
-    expect(loremIpsum).toBeCalledWith(options);
+    expect(loremIpsum).toHaveBeenCalledWith(options);
   });
 
   test('should return string', () => {
@@ -21,5 +21,5 @@ describe('IpsumService', () => {
     const ipsumService = new IpsumService();
     const received = ipsumService.generateIpsum();
     expect(received).toBe(expected);
-  })
-})
+  });
+});

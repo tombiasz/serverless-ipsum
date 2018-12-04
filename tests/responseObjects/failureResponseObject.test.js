@@ -33,7 +33,7 @@ describe('FailureResponseObject', () => {
     const request = new InvalidRequestObject();
     request.addError('foo', 'bar');
     request.addError('fizz', 'buzz');
-    const response = FailureResponseObject.buildFromInvalidRequestObject(request)
+    const response = FailureResponseObject.buildFromInvalidRequestObject(request);
     expect(response.type).toBe(FailureResponseObject.VALIDATION_ERROR);
     expect(response.message).toEqual([
       { parameter: 'foo', error: 'bar' },

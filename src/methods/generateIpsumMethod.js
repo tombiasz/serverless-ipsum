@@ -7,7 +7,7 @@ class GenerateIpsumMethod extends Method {
     this.ipsumService = ipsumService;
   }
 
-  process_request(request) {
+  processRequest(request) {
     const ipsum = this.ipsumService.generateIpsum(request.options);
     return new SuccessResponseObject(ipsum);
   }
