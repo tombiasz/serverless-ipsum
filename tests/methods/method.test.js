@@ -23,7 +23,7 @@ describe('Method', () => {
     expect(response.type).toBe(FailureResponseObject.SYSTEM_ERROR);
     expect(response.value).toEqual({
       type: FailureResponseObject.SYSTEM_ERROR,
-      message: 'Error: ups :(',
+      message: 'Error: not implemented',
     });
   });
 });
