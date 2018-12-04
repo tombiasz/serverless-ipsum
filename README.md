@@ -1,10 +1,10 @@
 # serverless-ipsum
 
-#noServerNovember challenge #1 Serverless Ipsum
+[#noServerNovember](https://serverless.com/blog/no-server-november-challenge/) challenge #1 Serverless Ipsum
 
 # run dev
 ```
-cp .env.xample .env
+cp .env.example .env
 yarn
 yarn start-dev
 ```
