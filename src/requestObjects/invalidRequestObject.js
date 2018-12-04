@@ -17,6 +17,14 @@ class InvalidRequestObject extends RequestObject {
   isValid() {
     return false;
   }
+
+  static fromValidationErrors(errors) {
+    const request = new this();
+    errors.forEach(({ dataPath, message }) => {
+      request.addError(dataPath, message);
+    });
+    return request;
+  }
 }
 
 module.exports = {

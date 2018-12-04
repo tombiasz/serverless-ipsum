@@ -14,4 +14,15 @@ describe('InvalidRequestObject', () => {
     const request = new InvalidRequestObject();
     expect(request.isValid()).toBeFalsy();
   });
+
+  test('fromValidationErrors should return instance with errors set', () => {
+    const errors = [
+      { dataPath: 'foo', message: 'bar' },
+      { dataPath: 'fizz', message: 'buzz' },
+    ];
+    const request = InvalidRequestObject.fromValidationErrors(errors);
+    expect(request.isValid()).toBeFalsy();
+    expect(request.hasErrors()).toBeTruthy();
+    expect(request.errors.length).toBe(2);
+  });
 });

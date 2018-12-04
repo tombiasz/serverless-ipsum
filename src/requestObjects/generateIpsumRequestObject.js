@@ -31,11 +31,7 @@ class GenerateIpsumRequestObject extends ValidRequestObject {
   static fromObject(obj) {
     const { isValid, errors } = this.validate(obj);
     if (!isValid) {
-      const invalidRequest = new InvalidRequestObject();
-      errors.forEach(({ dataPath, message }) => {
-        invalidRequest.addError(dataPath, message);
-      });
-      return invalidRequest;
+      return InvalidRequestObject.fromValidationErrors(errors);
     }
 
     return new this(obj.options);
